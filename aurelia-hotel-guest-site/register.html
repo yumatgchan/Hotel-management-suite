@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register User Account</title>
+    <meta
+      name="description"
+      content="Register an Aurelia Suites user profile with preferences, language, currency, and concierge details for a personalized hotel stay."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+
+  <body>
+
+
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Aurelia Suites home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" focusable="false">
+              <path d="M20 4 33 12v16L20 36 7 28V12L20 4Z" />
+              <path d="M14 27 20 12l6 15M16.7 22h6.6" />
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>Aurelia Suites</strong><span>Boutique Hotel</span></span>
+        </a>
+
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="rooms.html">Rooms</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+
+
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="login.html">Login</a>
+          <a class="btn btn-gold active" href="register.html">Register</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Dark mode</button>
+        </div>
+
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span>
+
+        </button>
+
+      </div>
+    </header>
+
+    <main id="main" class="auth-layout auth-layout-register">
+
+      <section class="auth-visual auth-visual-register">
+
+        <div class="auth-copy reveal">
+          <span class="eyebrow">User profile</span>
+          <h1>Sign up, dear guest</h1>
+          <p>
+            Your information, details and preferences will be securely stored. Book now a room and enjoy your stay!
+          </p>
+        </div>
+      </section>
+
+      <section class="auth-panel" aria-labelledby="register-title">
+        <div class="auth-card reveal">
+
+          <span class="status gold">Guest registration</span>
+          <h2 id="register-title">Create account</h2>
+          
+
+          <form class="form-grid" data-auth-form>
+            <div class="field-row">
+
+              <div class="field">
+                <label for="first-name">First name</label>
+                <input id="first-name" name="firstName" type="text" placeholder="Your first name.." required />
+              </div>
+
+              <div class="field">
+                <label for="last-name">Last name</label>
+                <input id="last-name" name="lastName" type="text" placeholder="Your last name.." required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="register-email">Email address</label>
+              <input id="register-email" name="email" type="email" placeholder="guest@example.com" required />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="register-password">Password</label>
+                <input id="register-password" name="password" type="password" placeholder="Create password" required />
+              </div>
+            
+              <div class="field">
+                <label for="confirm-password">Confirm password</label>
+                <input id="confirm-password" name="confirmPassword" type="password" placeholder="Repeat password" data-confirm-password required />
+              </div>
+            
+            </div>
+
+            <div class="field-row">
+
+              <div class="field">
+                <label for="preferred-language">Language</label>
+                <select id="preferred-language" name="language">
+                  <option>English</option>
+                  <option>Arabic</option>
+                  <option>French</option>
+                  <option>Spanish</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="preferred-currency">Currency</label>
+                <select id="preferred-currency" name="currency">
+                  <option>USD</option>
+                  <option>EUR</option>
+                  <option>EGP</option>
+                  <option>SAR</option>
+                </select>
+              </div>
+
+            </div>
+
+
+            <div class="field">
+              <label for="register-role">Account role</label>
+              <input  id="register-role" type="hidden" name="role" value="guest" data-role-select />
+            </div>
+
+            <div class="role-preview" data-role-preview>
+              <strong>Guest access</strong>
+              <span>Reservations, digital key, services, folio, feedback, and privacy requests.</span>
+            </div>
+
+            <div class="field">
+              <label for="stay-preferences">Stay preferences</label>
+              <textarea
+                id="stay-preferences" name="preferences"
+                placeholder="Example: feathers pillows, no feathers pillow, spa, vegetarian breakfast, anniversary note"
+              ></textarea>
+            </div>
+
+            <label class="checkline" for="privacy-consent">
+              <input id="privacy-consent" type="checkbox" required />
+              <span>I agree to create a guest profile and understand I can request privacy deletion later.</span>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Create profile</button>
+            <p class="form-message" aria-live="polite"></p>
+          </form>
+
+
+          <p class="auth-note">Already registered? <a href="login.html">Sign in</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <p class="footer-bottom">© <span data-year></span> Aurelia Suites. Hotel and management site for better guest experiences.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

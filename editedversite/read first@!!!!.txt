@@ -1,0 +1,13 @@
+put this folder inside XAMPP->htdocs
+
+------- HOW TO IMPORT AN SQL FILE--------
+
+-create new database
+-name it: "hotel"
+-click new inside the "hotel" database
+-click import
+-choose the file
+-scroll then import
+-VOILA!! YOU DID IT!! 
+
+any errors happen in this stage, deal it with yourself. i'm not a pro

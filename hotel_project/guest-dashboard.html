@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="responsive" />
+    <title>User Portal</title>
+    <meta
+      name="description" content="Aurelia Suites user portal prototype."/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header light" data-header>
+
+
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Aurelia Suites home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" focusable="false">
+              <path d="M20 4 33 12v16L20 36 7 28V12L20 4Z" />
+              <path d="M14 27 20 12l6 15M16.7 22h6.6" />
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>Aurelia Suites</strong><span>Boutique Hotel</span></span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="rooms.html">Rooms</a>
+          <a href="#services" data-guest-only-nav>Services</a>
+          <a href="#folio" data-guest-only-nav>Folio</a>
+        </nav>
+
+
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="login.html">Login</a>
+          <a class="btn btn-gold" href="register.html">Register</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Dark mode</button>
+        </div>
+
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+
+      </div>
+    </header>
+
+    <main id="main" class="dashboard-shell">
+
+
+      <section class="section section-alt">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            
+            <div>
+              <span class="eyebrow" data-role-label>Guest dashboard</span>
+              <h1 class="dashboard-title" data-dashboard-greeting>Good evening, Leila.</h1>
+            </div>
+            
+            <p data-dashboard-summary>
+              A single guest portal for reservation status, digital key, concierge requests, billing
+              preview, loyalty, feedback, and privacy support.
+            
+            </p>
+          </div>
+
+          
+          <div class="dashboard-kpis" data-dashboard-kpis>
+          
+            <article class="dashboard-card reveal">
+              <span class="label">Upcoming reservation</span>
+              <h3>Signature Suite</h3>
+              <p>Confirmed · 24 Apr to 28 Apr · 2 guests</p>
+              <span class="status gold">Inquiry → Confirmed</span>
+            </article>
+          
+            <article class="dashboard-card reveal">
+              <span class="label">Digital key</span>
+              <h3>Ready at 15:00</h3>
+              <p>Time-limited access appears after identity check-in.</p>
+              <span class="status">Secure simulation</span>
+            </article>
+          
+            <article class="dashboard-card reveal">
+              <span class="label">Loyalty</span>
+              <h3>Gold guest</h3>
+              <p>7 stays · upgrade eligible · referral reward available.</p>
+              <span class="status gold">VIP flag active</span>
+            </article>
+          
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner dashboard-grid">
+
+          <aside class="dashboard-card reveal">
+            <span class="status gold" data-notification-badge>Notifications</span>
+            <h2 data-notification-title>Stay alerts</h2>
+            <ul class="notification-list" data-notification-list>
+              <li>
+                <strong>Room readiness</strong>
+                <span>Housekeeping marked your suite as inspecting.</span>
+              </li>
+
+              <li>
+                <strong>Concierge</strong>
+                <span>Airport pickup is scheduled for 13:10.</span>
+              </li>
+              
+              <li>
+                <strong>Folio</strong>
+                <span>Spa deposit is refundable until 18:00 today.</span>
+              </li>
+            
+            </ul>
+          </aside>
+
+
+          <section class="dashboard-card reveal" aria-labelledby="portal-tabs-title" data-dashboard-workspace>
+            
+            <h2 id="portal-tabs-title" data-portal-title>Manage your stay</h2>
+
+
+            <div class="role-action-grid" data-role-actions></div>
+            <div data-guest-workspace>
+              
+              <div class="tabs" role="tablist" aria-label="Guest portal sections">
+                <button class="tab-btn active" type="button" data-tab="reservation">Reservation</button>
+                <button class="tab-btn" type="button" data-tab="services">Services</button>
+                <button class="tab-btn" type="button" data-tab="folio">Folio</button>
+                <button class="tab-btn" type="button" data-tab="feedback">Feedback & privacy</button>
+              </div>
+
+              <div class="tab-panel active" data-tab-panel="reservation">
+                <h3>Reservation workflow</h3>
+                <p>
+                  This helps with understanding the reservation process and tracking the status of your booking.
+                </p>
+                <ul class="reservation-track">
+                  <li><strong>Inquiry</strong><span class="status">Completed</span></li>
+                  <li><strong>Confirmed</strong><span class="status gold">Current</span></li>
+                  <li><strong>Checked in</strong><span class="status">Pending</span></li>
+                  <li><strong>Checked out</strong><span class="status">Pending</span></li>
+                  <li><strong>Folio closed</strong><span class="status">Pending</span></li>
+                </ul>
+
+                <div class="mini-grid">
+                
+                  <article>
+                    <span class="label">Room 1208</span>
+                    <strong>Inspecting</strong>
+                    <p>Housekeeping bridge will notify front desk when ready.</p>
+                  </article>
+
+                  <article>
+                    <span class="label">Early check-in</span>
+                    <strong>Possible from 13:30</strong>
+                    <p>Availability check depends on live room status.</p>
+                  </article>
+                </div>
+
+              </div>
+
+
+              <div class="tab-panel" data-tab-panel="services" id="services">
+                <h3>Request a service</h3>
+                <p>Send a concierge, housekeeping, maintenance, spa, or café request from the guest portal.</p>
+
+                <form class="form-grid compact-form" data-service-form>
+
+                  <div class="field-row">
+
+                    <div class="field">
+                      <label for="service-type">Service type</label>
+                      <select id="service-type" name="serviceType">
+                        <option>Concierge</option>
+                        <option>Housekeeping</option>
+                        <option>Maintenance</option>
+                        <option>Spa</option>
+                        <option>Café / Room dining</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label for="service-time">Preferred time</label>
+                      <input id="service-time" name="serviceTime" type="time" />
+                    </div>
+
+                  </div>
+
+                  <div class="field">
+                    <label for="service-notes">Notes</label>
+                    <textarea id="service-notes" name="serviceNotes" placeholder="Example: extra towels, late checkout request, dinner reservation"></textarea>
+                  </div>
+                  
+                  <button class="btn btn-primary" type="submit">Send request</button>
+                  <p class="form-message" aria-live="polite"></p>
+                </form>
+                <div id="booked-services" style="margin-top:1rem"></div>
+
+              </div>
+
+
+              <div class="tab-panel" data-tab-panel="folio" id="folio">
+                <h3>Billing and folio preview</h3>
+                <p>Guests can see charges, tax, service fees, cancellation fee signals, and split-bill actions.</p>
+                <div class="table-wrap">
+                  <table>
+
+                    <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr>
+                        <td>Signature Suite</td>
+                        <td>24 Apr</td>
+                        <td>Posted</td>
+                        <td>$320.00</td>
+                      </tr>
+                      <tr>
+                        <td>Spa reservation</td>
+                        <td>25 Apr</td>
+                        <td>Cancelable until 18:00</td>
+                        <td>$75.00</td>
+                      </tr>
+                      <tr>
+                        <td>Café POS charge</td>
+                        <td>25 Apr</td>
+                        <td>Pending</td>
+                        <td>$28.50</td>
+                      </tr>
+                      <tr>
+                        <td>Taxes and fees</td>
+                        <td>Estimate</td>
+                        <td>Calculated</td>
+                        <td>$46.20</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="button-row">
+                  <button class="btn btn-primary" type="button">Request split bill</button>
+                  <button class="btn btn-soft" type="button">Change currency</button>
+                </div>
+
+              </div>
+
+
+              <div class="tab-panel" data-tab-panel="feedback" id="feedback">
+                <h3>Feedback and privacy</h3>
+                <p>
+                  Post-stay feedback, loyalty history, right-to-be-forgotten requests, and GDPR-style privacy
+                  actions are represented here.
+                </p>
+
+                <form class="form-grid compact-form" data-feedback-form>
+
+                  <div class="field">
+                    <label for="feedback-score">Stay rating</label>
+                    <select id="feedback-score" name="feedbackScore">
+                      <option>5 · Excellent</option>
+                      <option>4 · Very good</option>
+                      <option>3 · Good</option>
+                      <option>2 · Needs improvement</option>
+                      <option>1 · Poor</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="feedback-notes">Feedback</label>
+                    <textarea id="feedback-notes" name="feedbackNotes" placeholder="Tell us what made the stay memorable or what should improve."></textarea>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Submit feedback</button>
+                  <p class="form-message" aria-live="polite"></p>
+                </form>
+                <div class="privacy-box">
+                  <strong>Privacy request center</strong>
+                  <p>Request profile export, preference correction, or account deletion review.</p>
+                  <button class="btn btn-soft" type="button">Request data deletion</button>
+                </div>
+              </div>
+            </div>
+            <div class="staff-workspace hidden" data-staff-workspace aria-live="polite"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <div class="footer-grid">
+
+          <div>
+            <h2>Aurelia Suites</h2>
+            <p>Boutique hotel experience with a modern hospitality management suite.</p>
+          </div>
+          
+                    <div>
+
+          </div>
+
+          <div>
+            <h3>Explore</h3>
+            <ul>
+              <li><a href="rooms.html">Rooms</a></li>
+              <li><a href="register.html">Membership</a></li>
+            </ul>
+          </div>
+
+
+
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="mailto:contact@aureliasuites.com">contact@aureliasuites.com</a></li>
+              <li><a href="tel:+2012345670">+20 12345670</a></li>
+              <li><a href="#">13th street, giza, october city </a></li>
+            </ul>
+          </div>
+
+        </div>
+        <p class="footer-bottom">© <span data-year></span> Aurelia Suites. Hotel and management site for better guest experiences.</p>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Login</title>
+    <meta name="description" content="Login to the Aurelia Suites." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Aurelia Suites home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" focusable="false">
+              <path d="M20 4 33 12v16L20 36 7 28V12L20 4Z" />
+              <path d="M14 27 20 12l6 15M16.7 22h6.6" />
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>Aurelia Suites</strong><span>Boutique Hotel</span></span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="rooms.html">Rooms</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-outline active" href="login.html">Login</a>
+          <a class="btn btn-gold" href="register.html">Register</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Dark mode</button>
+        </div>
+
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <main id="main" class="auth-layout">
+
+
+      <section class="auth-visual">
+        <div class="auth-copy reveal">
+          <span class="eyebrow">Guest portal</span>
+          <h1>Welcome back to Aurelia Suites.</h1>
+          <p>
+            Sign in to access your personalized guest experience and manage your stay.
+          </p>
+        </div>
+      </section>
+
+
+      <section class="auth-panel" aria-labelledby="login-title">
+
+        <div class="auth-card reveal">
+          <span class="status gold">Secure guest access</span>
+          <h2 id="login-title">Login</h2>
+
+          <form class="form-grid" data-auth-form>
+
+
+            <div class="field">
+              <label for="login-email">Email address</label>
+              <input id="login-email" name="email" type="email" placeholder="email@example.com" required />
+            </div>
+
+            <div class="field">
+              <label for="login-password">Password</label>
+              <input id="login-password" name="password" type="password" placeholder="Enter password...." required />
+            </div>
+
+            <div class="field">
+              <label for="login-role">Login role</label>
+              <select id="login-role" name="role" data-role-select>
+                <option value="guest" selected>Guest</option>
+                <option value="manager">Manager</option>
+                <option value="frontDesk">Front desk</option>
+                <option value="housekeeper">Housekeeper</option>
+                <option value="accountant">Accountant</option>
+                <option value="cafeStaff">Café staff</option>
+                <option value="itAdmin">IT administrator</option>
+              </select>
+            </div>
+
+            <div class="role-preview" data-role-preview>
+              <strong>Guest access</strong>
+              <span>Reservations, digital key, services, folio, feedback, and privacy requests.</span>
+            </div>
+             
+            <button class="btn btn-primary" type="submit">Open dashboard</button>
+            <p class="form-message" aria-live="polite"></p>
+          </form>
+
+          <p class="auth-note">
+            New to Aurelia? <a href="register.html">Register</a>
+          </p>
+        </div>
+
+        <div class="auth-meta reveal">
+          <article>
+            <strong>Safety first</strong>
+            <span>your information is protected with industry-standard security measures.</span>
+          </article>
+
+          <article>
+            <strong>Worldwide currencies</strong>
+            <span>Support for multiple currencies ensures a seamless experience for international guests.</span>
+          </article>
+
+          <article>
+            <strong>Fast folio</strong>
+            <span>Quick and easy access to your folio information at any time.</span>
+          </article>
+          
+          <article>
+            <strong>24/7 support</strong>
+            <span>Our support team is available around the clock to assist you with any inquiries or issues.</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <p class="footer-bottom">© <span data-year></span> Aurelia Suites. Hotel and management site for better guest experiences.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

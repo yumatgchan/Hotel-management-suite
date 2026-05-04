@@ -1,5 +1,4 @@
-<!-- لو اتاكد من الداتا بيس ان كله تمام هيروح لصفحة الhome
- انا شيلت اللينك بتاع الجافا اسكريبت علشان ميروحش لصفح تانيه غير لما يكون كله تمام  -->
+
  <?php
 session_start();
 $conn=mysqli_connect("localhost", "root", "", "hotel_system");
@@ -13,7 +12,7 @@ if (isset($_POST['login'])) {
 
     if (!empty($email) && !empty($password)) {
 
-        $query = mysqli_query($conn, "SELECT id, name, email, password FROM guest WHERE email='$email'");
+        $query = mysqli_query($conn, "SELECT guest_id, name, email, phone, password FROM guest WHERE email='$email'");
 
         if (mysqli_num_rows($query) == 1) {
 
@@ -24,22 +23,24 @@ if (isset($_POST['login'])) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
 
-                header("Location: index.html");
+                header("Location: index.php");
                 exit();
 
             } else {
-                $error = "❌ الباسورد غلط";
+                echo "❌ الباسورد غلط";
             }
 
         } else {
-            $error = "❌ الإيميل غير موجود";
+            echo "❌ الإيميل غير موجود";
         }
 
     } else {
-        $error = "❌ املي كل البيانات";
+         echo "❌ املي كل البيانات";
     }
 }
+
 ?>
+
  <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -58,7 +59,7 @@ if (isset($_POST['login'])) {
     <header class="site-header" data-header>
 
       <div class="nav-shell">
-        <a class="brand" href="index.html" aria-label="Aurelia Suites home">
+        <a class="brand" href="index.php" aria-label="Aurelia Suites home">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 40 40" focusable="false">
               <path d="M20 4 33 12v16L20 36 7 28V12L20 4Z" />
@@ -69,15 +70,17 @@ if (isset($_POST['login'])) {
         </a>
 
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="index.html">Home</a>
+          <a href="index.php">Home</a>
           <a href="rooms.html">Rooms</a>
-          <a href="index.html#experience">Experience</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="index.php">Experience</a>
+          <a href="index.php#contact">Contact</a>
+           <a href="logout.php">Logout</a>
+         
         </nav>
 
         <div class="nav-actions">
-          <a class="btn btn-outline active" href="login.html">Login</a>
-          <a class="btn btn-gold" href="register.html">Register</a>
+          <a class="btn btn-outline active" href="login.php">Login</a>
+          <a class="btn btn-gold" href="register.php">Register</a>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Dark mode</button>
         </div>
 
@@ -110,7 +113,7 @@ if (isset($_POST['login'])) {
           <span class="status gold">Secure guest access</span>
           <h2 id="login-title">Login</h2>
 
-          <form class="form-grid" data-auth-form method="POST" action="">
+          <form class="form-grid" data-auth-form method="POST">
 
 
             <div class="field">
@@ -124,15 +127,15 @@ if (isset($_POST['login'])) {
             </div>
 
             <div class="field">
-              <label for="login-role">Login role</label>
-              <select id="login-role" name="role" data-role-select>
+              <label for="login-role" name="role">Login role</label>
+              <select id="login-role"  data-role-select>
                 <option value="guest" selected>Guest</option>
-                <option value="manager">Manager</option>
-                <option value="frontDesk">Front desk</option>
-                <option value="housekeeper">Housekeeper</option>
-                <option value="accountant">Accountant</option>
+                <option value="manager" >Manager</option>
+                <option value="frontDesk" >Front desk</option>
+                <option value="housekeeper" >Housekeeper</option>
+                <option value="accountant" >Accountant</option>
                 <option value="cafeStaff">Café staff</option>
-                <option value="itAdmin">IT administrator</option>
+                <option value="itAdmin" >IT administrator</option>
               </select>
             </div>
 
@@ -147,7 +150,7 @@ if (isset($_POST['login'])) {
           </form>
 
           <p class="auth-note">
-            New to Aurelia? <a href="register.html">Register</a>
+            New to Aurelia? <a href="register.php">Register</a>
           </p>
         </div>
 

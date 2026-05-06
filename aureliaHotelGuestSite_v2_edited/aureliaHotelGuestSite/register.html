@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account – Aurelia Suites</title>
+    <meta name="description" content="Register at the Aurelia Suites guest portal." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Aurelia Suites home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" focusable="false">
+              <path d="M20 4 33 12v16L20 36 7 28V12L20 4Z" />
+              <path d="M14 27 20 12l6 15M16.7 22h6.6" />
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>Aurelia Suites</strong><span>Boutique Hotel</span></span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="rooms.html">Rooms</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="login.html">Login</a>
+          <a class="btn btn-gold active" href="register.html">Register</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Dark mode</button>
+        </div>
+
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="auth-layout">
+      <section class="auth-visual">
+        <div class="auth-copy reveal">
+          <span class="eyebrow">New guest account</span>
+          <h1>Join Aurelia Suites.</h1>
+          <p>Create your guest profile and unlock personalized stays, loyalty rewards, and fast check-in.</p>
+        </div>
+      </section>
+
+      <section class="auth-panel" aria-labelledby="register-title">
+        <div class="auth-card reveal">
+          <span class="status gold">Guest registration</span>
+          <h2 id="register-title">Create account</h2>
+
+          <form class="form-grid" id="register-form">
+            <div class="field">
+              <label for="reg-name">Full name</label>
+              <input id="reg-name" name="name" type="text" placeholder="Your full name" required />
+            </div>
+
+            <div class="field">
+              <label for="reg-email">Email address</label>
+              <input id="reg-email" name="email" type="email" placeholder="email@example.com" required />
+            </div>
+
+            <div class="field">
+              <label for="reg-phone">Phone number</label>
+              <input id="reg-phone" name="phone" type="tel" placeholder="+20 1234 5678" />
+            </div>
+
+            <div class="field">
+              <label for="reg-password">Password (min. 6 characters)</label>
+              <input id="reg-password" name="password" type="password" placeholder="Choose a secure password" required minlength="6" />
+            </div>
+
+            <div class="field">
+              <label for="reg-confirm">Confirm password</label>
+              <input id="reg-confirm" name="confirm" type="password" placeholder="Repeat your password" required />
+            </div>
+
+            <button class="btn btn-primary" type="submit" id="register-btn">Create guest account</button>
+            <p class="form-message" id="reg-message" aria-live="polite"></p>
+          </form>
+
+          <p class="auth-note">Already have an account? <a href="login.html">Login</a></p>
+        </div>
+
+        <div class="auth-meta reveal">
+          <article>
+            <strong>Members save 30%</strong>
+            <span>Direct booking rates are exclusive to registered guests.</span>
+          </article>
+          <article>
+            <strong>Loyalty rewards</strong>
+            <span>Every stay earns points toward room upgrades and spa access.</span>
+          </article>
+          <article>
+            <strong>Fast check-in</strong>
+            <span>Your preferences are saved for frictionless repeat stays.</span>
+          </article>
+          <article>
+            <strong>Privacy first</strong>
+            <span>We protect your data in line with GDPR standards.</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <p class="footer-bottom">© <span data-year></span> Aurelia Suites.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

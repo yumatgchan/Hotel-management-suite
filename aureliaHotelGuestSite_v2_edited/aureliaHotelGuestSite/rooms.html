@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rooms &amp; Suites – Aurelia Suites</title>
+    <meta name="description" content="Browse Aurelia Suites rooms and suites." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Aurelia Suites home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" focusable="false">
+              <path d="M20 4 33 12v16L20 36 7 28V12L20 4Z" />
+              <path d="M14 27 20 12l6 15M16.7 22h6.6" />
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>Aurelia Suites</strong><span>Boutique Hotel</span></span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a class="active" href="rooms.html">Rooms</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="login.html" id="nav-login-btn">Login</a>
+          <a class="btn btn-gold" href="register.html" id="nav-register-btn">Register</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Dark mode</button>
+        </div>
+
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="page-hero rooms-hero">
+        <div class="hero-inner">
+          <div class="hero-content reveal">
+            <span class="eyebrow">Rooms</span>
+            <h1>Choose the room that fits your style.</h1>
+            <p>
+              From cozy classics to spacious suites, each room type is designed to offer a unique blend
+              of comfort, style, and personalized service for an unforgettable stay.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Availability search bar -->
+      <section class="section section-alt">
+        <div class="section-inner">
+          <form class="booking-bar booking-bar-inline reveal" id="avail-form">
+            <div class="booking-field">
+              <label for="arrival">Arrival</label>
+              <input id="arrival" name="arrival" type="date" required />
+            </div>
+            <div class="booking-field">
+              <label for="departure">Departure</label>
+              <input id="departure" name="departure" type="date" required />
+            </div>
+            <div class="booking-field">
+              <label for="guests">Guests</label>
+              <select id="guests" name="guests">
+                <option>1 guest</option>
+                <option selected>2 guests</option>
+                <option>3 guests</option>
+                <option>4 guests</option>
+              </select>
+            </div>
+            <div class="booking-field">
+              <label for="currency">Currency</label>
+              <select id="currency" name="currency">
+                <option>USD</option><option>EUR</option><option>EGP</option><option>SAR</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Check availability</button>
+          </form>
+          <p id="avail-msg" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <!-- Front-desk room manager (visible only when logged in as frontDesk) -->
+      <section class="section" id="fd-room-manager">
+        <div class="section-inner">
+          <div class="fd-panel">
+            <span class="status gold">Front desk · Room Management</span>
+            <h3>Add a new room</h3>
+            <div class="fd-form-row" id="fd-add-form">
+              <div class="field">
+                <label for="fd-num">Room Number</label>
+                <input id="fd-num" type="number" placeholder="e.g. 303" />
+              </div>
+              <div class="field">
+                <label for="fd-type">Type</label>
+                <select id="fd-type">
+                  <option value="single">Single</option>
+                  <option value="double">Double</option>
+                  <option value="suite">Suite</option>
+                  <option value="family">Family</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="fd-price">Price / night ($)</label>
+                <input id="fd-price" type="number" step="0.01" placeholder="e.g. 850" />
+              </div>
+              <div class="field">
+                <label for="fd-status">Status</label>
+                <select id="fd-status">
+                  <option value="available">Available</option>
+                  <option value="occupied">Occupied</option>
+                  <option value="maintenance">Maintenance</option>
+                  <option value="out_of_order">Out of order</option>
+                </select>
+              </div>
+              <div class="field" style="flex:0">
+                <label>&nbsp;</label>
+                <button class="btn btn-primary btn-sm" type="button" id="fd-add-btn">Add Room</button>
+              </div>
+            </div>
+            <p id="fd-form-msg" aria-live="polite"></p>
+          </div>
+
+          <div class="fd-panel">
+            <h3>All Rooms</h3>
+            <div style="overflow-x:auto">
+              <table class="fd-table" id="fd-rooms-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Number</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="fd-rooms-tbody">
+                  <tr><td colspan="6" class="rooms-loading">Loading rooms…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Public room collection -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <h2>Room collection</h2>
+            <p>Filter by room type and compare comfort, services, and booking features.</p>
+          </div>
+
+          <div class="filters reveal" aria-label="Room filters">
+            <button class="filter-btn active" type="button" data-filter="all">All rooms</button>
+            <button class="filter-btn" type="button" data-filter="suite">Suites</button>
+            <button class="filter-btn" type="button" data-filter="single">Single</button>
+            <button class="filter-btn" type="button" data-filter="double">Double</button>
+            <button class="filter-btn" type="button" data-filter="family">Family</button>
+          </div>
+
+          <div class="rooms-grid" id="rooms-grid">
+            <p class="rooms-loading">Loading rooms…</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Info section -->
+      <section class="section section-dark">
+        <div class="section-inner split">
+          <div class="content-stack reveal">
+            <span class="eyebrow">Operational confidence</span>
+            <h2>Room availability meets hotel operations.</h2>
+            <p>
+              The rooms page mirrors core PMS needs: room allocation, housekeeping readiness,
+              overbooking waitlist concepts, walk-in pricing, group booking, and guest profile capture.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h3>Designed roles behind the guest view</h3>
+            <p>
+              Front desk manages booking status, housekeeping updates room readiness, accountants close
+              folios, and managers review reports while guests see one elegant booking experience.
+            </p>
+            <div class="tags">
+              <span class="tag">Guest</span>
+              <span class="tag">Front desk</span>
+              <span class="tag">Housekeeping</span>
+              <span class="tag">Accountant</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>
+            <h2>Aurelia Suites</h2>
+            <p>Boutique hotel experience with a modern hospitality management suite.</p>
+          </div>
+          <div></div>
+          <div>
+            <h3>Explore</h3>
+            <ul>
+              <li><a href="rooms.html">Rooms</a></li>
+              <li><a href="register.html">Membership</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="mailto:contact@aureliasuites.com">contact@aureliasuites.com</a></li>
+              <li><a href="tel:+2012345670">+20 12345670</a></li>
+              <li><a href="#">13th street, giza, october city</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-bottom">© <span data-year></span> Aurelia Suites.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  
+  </body>
+</html>

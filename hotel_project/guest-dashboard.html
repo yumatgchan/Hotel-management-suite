@@ -37,6 +37,7 @@
         <div class="nav-actions">
           <a class="btn btn-outline" href="login.html">Login</a>
           <a class="btn btn-gold" href="register.html">Register</a>
+          <button class="btn btn-outline" type="button" id="logout-btn">Log out</button>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Dark mode</button>
         </div>
 
@@ -71,9 +72,9 @@
           
             <article class="dashboard-card reveal">
               <span class="label">Upcoming reservation</span>
-              <h3>Signature Suite</h3>
-              <p>Confirmed · 24 Apr to 28 Apr · 2 guests</p>
-              <span class="status gold">Inquiry → Confirmed</span>
+              <h3 id="kpi-res-title">—</h3>
+              <p id="kpi-res-body">No confirmed reservations yet.</p>
+              <span class="status gold" id="kpi-res-status">—</span>
             </article>
           
             <article class="dashboard-card reveal">
@@ -93,6 +94,245 @@
           </div>
         </div>
       </section>
+
+
+
+    <section class="section" id="hk-panel">
+        <div class="section-inner">
+          <div class="dashboard-card reveal">
+            <span class="status gold">Housekeeping · Notify Front Desk</span>
+            <h2>Send room-status update</h2>
+            <p>Inspect the room and notify front desk of the new status so they can update availability.</p>
+
+            <div class="notif-form-row">
+              <div class="field">
+                <label for="hk-room-sel">Room</label>
+                <select id="hk-room-sel">
+                  <option value="">Loading rooms…</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="hk-new-status">Inspection result</label>
+                <select id="hk-new-status">
+                  <option value="cleaned">Cleaned · awaiting inspection</option>
+                  <option value="inspected">Inspected · supervisor approved</option>
+                  <option value="guest_ready">Guest-ready</option>
+                  <option value="maintenance_required">Maintenance required</option>
+                  <option value="out_of_order">Out of order</option>
+                </select>
+              </div>
+              <div class="field" style="flex:2">
+                <label for="hk-message">Note to front desk (optional)</label>
+                <input type="text" id="hk-message" placeholder="e.g. VIP setup done, broken AC noted…" />
+              </div>
+              <div class="field" style="flex:0">
+                <label>&nbsp;</label>
+                <button class="btn btn-primary" type="button" id="hk-send-btn">Notify</button>
+              </div>
+            </div>
+            <p id="hk-notif-msg" aria-live="polite" style="font-size:.875rem;min-height:1.2em;"></p>
+
+            <h3 style="margin-top:1.5rem">My notification history</h3>
+            <div id="hk-history">Loading…</div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+      <section class="section" id="fd-notif-panel">
+        <div class="section-inner">
+          <div class="dashboard-card reveal">
+            <span class="status gold">Front Desk · Housekeeping Inbox</span>
+            <h2>Room-status notifications</h2>
+            <p>Review room-status updates from housekeeping and apply or dismiss them.</p>
+            <div id="fd-notif-list">Loading…</div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <section class="section">
         <div class="section-inner dashboard-grid">
@@ -127,6 +367,25 @@
 
             <div class="role-action-grid" data-role-actions></div>
             <div data-guest-workspace>
+              <div id="pending-reservation-banner">
+                <h4>Complete your reservation</h4>
+                <p id="pending-room-info"></p>
+                <div class="reservation-form-grid" id="pending-form">
+                  <div class="field">
+                    <label for="pend-checkin">Check-in</label>
+                    <input id="pend-checkin" type="date" />
+                  </div>
+                  <div class="field">
+                    <label for="pend-checkout">Check-out</label>
+                    <input id="pend-checkout" type="date" />
+                  </div>
+                  <div class="field" style="flex:0">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-primary" type="button" id="pend-confirm-btn">Confirm Reservation</button>
+                  </div>
+                </div>
+                <p id="pend-msg" style="font-size:.875rem;margin-top:.5rem;"></p>
+              </div>
               
               <div class="tabs" role="tablist" aria-label="Guest portal sections">
                 <button class="tab-btn active" type="button" data-tab="reservation">Reservation</button>
@@ -136,31 +395,10 @@
               </div>
 
               <div class="tab-panel active" data-tab-panel="reservation">
-                <h3>Reservation workflow</h3>
-                <p>
-                  This helps with understanding the reservation process and tracking the status of your booking.
-                </p>
-                <ul class="reservation-track">
-                  <li><strong>Inquiry</strong><span class="status">Completed</span></li>
-                  <li><strong>Confirmed</strong><span class="status gold">Current</span></li>
-                  <li><strong>Checked in</strong><span class="status">Pending</span></li>
-                  <li><strong>Checked out</strong><span class="status">Pending</span></li>
-                  <li><strong>Folio closed</strong><span class="status">Pending</span></li>
-                </ul>
-
-                <div class="mini-grid">
-                
-                  <article>
-                    <span class="label">Room 1208</span>
-                    <strong>Inspecting</strong>
-                    <p>Housekeeping bridge will notify front desk when ready.</p>
-                  </article>
-
-                  <article>
-                    <span class="label">Early check-in</span>
-                    <strong>Possible from 13:30</strong>
-                    <p>Availability check depends on live room status.</p>
-                  </article>
+                <h3>My Reservations</h3>
+                <p>Your booking history and current reservation status.</p>
+                <div id="my-reservations">
+                  <p style="color:var(--clr-text-soft,#6b7280)">Loading reservations…</p>
                 </div>
 
               </div>
